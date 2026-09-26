@@ -1,0 +1,17 @@
+# Questo repository traccia solo il codice scritto per il sito: il tema "La Tana di Ariel".
+# Tutto il resto è escluso: core di WordPress, temi e plugin predefiniti, upload,
+# wp-config.php (credenziali del database e chiavi di sicurezza), .htaccess.
+/*
+!/.gitignore
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/la-tana-di-ariel/
+
+# Se un domani aggiungi un plugin scritto da te, elencalo qui, ad esempio:
+# !/wp-content/plugins/
+# /wp-content/plugins/*
+# !/wp-content/plugins/nome-del-tuo-plugin/
+
+.DS_Store
