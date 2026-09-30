@@ -2,7 +2,7 @@
 /**
  * Pagina di una categoria o archivio generico.
  * - Categoria con sottocategorie (es. Ariel): introduzione e una scheda per ogni sottocategoria.
- * - Altrimenti: introduzione ed elenco dei racconti.
+ * - Altrimenti: introduzione ed elenco dei racconti (per le categorie, schede piccole in griglia come la Bottega).
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -77,7 +77,7 @@ $hub_icons = array(
   <?php else : ?>
   <section class="category-list">
     <div class="wrap">
-      <div class="story-list">
+      <div class="story-list<?php echo is_category() ? ' story-grid' : ''; ?>">
         <?php if (have_posts()) : ?>
           <?php while (have_posts()) : the_post(); get_template_part('template-parts/card', 'story'); endwhile; ?>
         <?php else : ?>

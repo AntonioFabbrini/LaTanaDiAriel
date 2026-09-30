@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('TANA_VERSION', '1.1.0');
+define('TANA_VERSION', '1.2.0');
 
 /* ------------------------------------------------------------------
  * Impostazioni base del tema

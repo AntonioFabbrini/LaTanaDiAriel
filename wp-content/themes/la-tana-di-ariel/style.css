@@ -3,7 +3,7 @@ Theme Name: La Tana di Ariel
 Theme URI: https://latanadiariel.it
 Author: Antonio
 Description: Tema classico per il sito-blog "La Tana di Ariel": storie di Ariel, viaggi con Olivia, La Bottega (oggetti handmade), La Nostra Tana e Chi siamo. Palette e tipografia derivate dal logo (Fraunces + Karla).
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -214,6 +214,18 @@ section{padding-block:clamp(48px,7vw,92px);}
   color:var(--crimson-soft);
 }
 .story-list-empty{color:var(--ink-soft);font-family:'Fraunces',serif;font-style:italic;}
+/* Nelle categorie (es. Storie di vita) i racconti sono schede piccole in griglia, come nella Bottega. */
+.story-list.story-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(240px,1fr));
+  gap:22px;max-width:none;
+}
+.story-grid .story-list-empty{grid-column:1 / -1;}
+.story-grid .story-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px -24px rgba(28,20,12,0.4);}
+.story-grid .story-card-body{padding:18px 20px 20px;}
+.story-grid .story-card-body h3{font-size:1.1rem;}
+.story-grid .story-card-body .teaser{font-size:0.92rem;line-height:1.55;}
+.story-grid .story-card-body .story-cta{font-size:0.8rem;}
 
 .story-more{
   display:inline-block;margin-top:14px;
