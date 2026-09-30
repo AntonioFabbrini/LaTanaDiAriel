@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('TANA_VERSION', '1.0.0');
+define('TANA_VERSION', '1.1.0');
 
 /* ------------------------------------------------------------------
  * Impostazioni base del tema
@@ -112,14 +112,40 @@ function tana_categories_defaults() {
             'desc'    => 'La caravan, la vita on the road, i consigli pratici per viaggiare in roulotte insieme al proprio cane.',
             'empty'   => 'Presto qui troverai i primi racconti di viaggio con Olivia.',
         ),
+        // Sottocategorie di Ariel: la pagina "Ariel" mostra una scheda per ciascuna.
+        'storie-di-vita' => array(
+            'name'    => 'Storie di vita',
+            'parent'  => 'ariel',
+            'eyebrow' => 'Ariel',
+            'tag'     => 'Racconti',
+            'desc'    => 'I piccoli e grandi episodi di ogni giorno con Ariel: le sue scoperte, le sue abitudini, i momenti che ci hanno cambiati.',
+            'empty'   => 'Presto qui troverai le prime storie di vita con Ariel.',
+        ),
+        'consigli-dalla-tana' => array(
+            'name'    => 'Consigli dalla tana',
+            'parent'  => 'ariel',
+            'eyebrow' => 'Ariel',
+            'tag'     => 'Consigli pratici',
+            'desc'    => 'Quello che abbiamo imparato vivendo con Ariel: cura, abitudini e piccoli accorgimenti per la vita di tutti i giorni con un cane.',
+            'empty'   => 'Presto qui troverai i primi consigli dalla tana.',
+        ),
     );
 }
 
 function tana_on_activation() {
     foreach (tana_categories_defaults() as $slug => $c) {
-        if (!term_exists($slug, 'category')) {
-            wp_insert_term($c['name'], 'category', array('slug' => $slug, 'description' => $c['desc']));
+        if (term_exists($slug, 'category')) {
+            continue;
         }
+        $args = array('slug' => $slug, 'description' => $c['desc']);
+        // Le categorie madri sono elencate prima delle figlie, quindi esistono già.
+        if (!empty($c['parent'])) {
+            $parent = get_category_by_slug($c['parent']);
+            if ($parent) {
+                $args['parent'] = $parent->term_id;
+            }
+        }
+        wp_insert_term($c['name'], 'category', $args);
     }
 
     if (!get_page_by_path('chi-siamo')) {
@@ -165,6 +191,7 @@ function tana_category_info($term) {
     $defaults = tana_categories_defaults();
     $slug = is_object($term) ? $term->slug : $term;
     $d = isset($defaults[$slug]) ? $defaults[$slug] : array('name' => '', 'eyebrow' => 'Dalla Tana', 'desc' => '', 'empty' => 'Presto nuovi racconti.');
+    $d += array('tag' => $d['eyebrow']);
     if (is_object($term)) {
         $d['name'] = $term->name;
         if (!empty($term->description)) {
@@ -211,7 +238,10 @@ function tana_icon_key_for($post_id) {
     }
     $cats = get_the_category($post_id);
     if ($cats) {
-        return $cats[0]->slug;
+        // Per le sottocategorie vale l'icona della categoria principale (es. Storie di vita → Ariel).
+        $ancestors = get_ancestors($cats[0]->term_id, 'category');
+        $top = $ancestors ? get_category(end($ancestors)) : $cats[0];
+        return $top->slug;
     }
     return 'tana';
 }
