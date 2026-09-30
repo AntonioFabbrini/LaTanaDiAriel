@@ -29,6 +29,8 @@ if (is_category()) {
 $hub_icons = array(
     'storie-di-vita'      => '<path d="M22 30c-5-4-9-7.4-9-11.8C13 15 15.4 13 18 13c1.8 0 3.2 1 4 2.4.8-1.4 2.2-2.4 4-2.4 2.6 0 5 2 5 5.2 0 4.4-4 7.8-9 11.8z" fill="none" stroke="var(--crimson)" stroke-width="1.6" stroke-linejoin="round"/>',
     'consigli-dalla-tana' => '<ellipse cx="22" cy="26" rx="5.5" ry="4.5" fill="none" stroke="var(--crimson)" stroke-width="1.6"/><circle cx="15" cy="19" r="2.2" fill="none" stroke="var(--crimson)" stroke-width="1.6"/><circle cx="19.5" cy="15" r="2.2" fill="none" stroke="var(--crimson)" stroke-width="1.6"/><circle cx="24.5" cy="15" r="2.2" fill="none" stroke="var(--crimson)" stroke-width="1.6"/><circle cx="29" cy="19" r="2.2" fill="none" stroke="var(--crimson)" stroke-width="1.6"/>',
+    'diario-di-bordo'     => '<path d="M14 13h13a3 3 0 0 1 3 3v15H17a3 3 0 0 1-3-3z" fill="none" stroke="var(--crimson)" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 28a3 3 0 0 1 3-3h13M19 17h7M19 21h5" fill="none" stroke="var(--crimson)" stroke-width="1.6" stroke-linecap="round"/>',
+    'in-viaggio-con-la-tana' => '<path d="M10 28 Q22 12 34 28" fill="none" stroke="var(--crimson)" stroke-width="1.6" stroke-linecap="round"/><circle cx="14" cy="29" r="3" fill="none" stroke="var(--crimson)" stroke-width="1.6"/><circle cx="30" cy="29" r="3" fill="none" stroke="var(--crimson)" stroke-width="1.6"/>',
 );
 ?>
 <main id="top">

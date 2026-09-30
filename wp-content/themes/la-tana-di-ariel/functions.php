@@ -129,6 +129,23 @@ function tana_categories_defaults() {
             'desc'    => 'Quello che abbiamo imparato vivendo con Ariel: cura, abitudini e piccoli accorgimenti per la vita di tutti i giorni con un cane.',
             'empty'   => 'Presto qui troverai i primi consigli dalla tana.',
         ),
+        // Sottocategorie di Olivia.
+        'diario-di-bordo' => array(
+            'name'    => 'Diario di bordo',
+            'parent'  => 'olivia',
+            'eyebrow' => 'Olivia',
+            'tag'     => 'Racconti di viaggio',
+            'desc'    => 'Le tappe, le strade e gli incontri dei nostri viaggi con Olivia, raccontati come in un diario.',
+            'empty'   => 'Presto qui troverai le prime pagine del diario di bordo.',
+        ),
+        'in-viaggio-con-la-tana' => array(
+            'name'    => 'In viaggio con la Tana',
+            'parent'  => 'olivia',
+            'eyebrow' => 'Olivia',
+            'tag'     => 'Consigli pratici',
+            'desc'    => 'Come si viaggia in roulotte con un cane: preparativi, soste, attrezzatura e quello che abbiamo imparato strada facendo.',
+            'empty'   => 'Presto qui troverai i primi consigli per viaggiare con la Tana.',
+        ),
     );
 }
 
